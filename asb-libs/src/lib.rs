@@ -7,6 +7,7 @@ pub mod redisdb;
 pub mod surrealdb;
 
 pub use argon::*;
+pub use asb_entities::*;
 pub use axum::*;
 pub use enviroment::*;
 pub use jsonwebtoken::*;

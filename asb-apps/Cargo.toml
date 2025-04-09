@@ -1,0 +1,18 @@
+[package]
+name = "asb-apps"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+asb-libs = { version = "0.1.0", path = "../asb-libs" }
+asb-utils = { version = "0.1.0", path = "../asb-utils" }
+asb-entities = { version = "0.1.0", path = "../asb-entities" }
+axum.workspace = true
+tokio.workspace = true
+tower-http.workspace = true
+utoipa-swagger-ui.workspace = true
+serde.workspace = true
+utoipa.workspace = true
+anyhow.workspace = true
+redis.workspace = true
+serde_json.workspace = true

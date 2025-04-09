@@ -2,9 +2,10 @@ use super::{
 	AuthLoginRequestDto, AuthRegisterRequestDto, AuthResendOtpRequestDto, AuthService,
 	AuthVerifyEmailRequestDto,
 };
-use crate::{v1::AuthLoginResponsetDto, AppState};
-use crate::{MessageResponseDto, ResponseSuccessDto};
-use axum::{response::IntoResponse, Extension, Json};
+use crate::{
+	AppState, MessageResponseDto, ResponseSuccessDto, v1::AuthLoginResponsetDto,
+};
+use axum::{Extension, Json, response::IntoResponse};
 
 #[utoipa::path(
     post,

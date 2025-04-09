@@ -6,9 +6,9 @@ use super::{
 	AuthVerifyEmailRequestDto, TokenDto,
 };
 use crate::{
-	common_response, encode_access_token, encode_refresh_token, generate_otp,
-	hash_password, send_email, success_response, v1::UsersItemDto, verify_password,
-	AppState, Env, ResponseSuccessDto,
+	AppState, Env, OtpManager, ResponseSuccessDto, common_response,
+	encode_access_token, encode_refresh_token, hash_password, send_email,
+	success_response, v1::UsersItemDto, verify_password,
 };
 
 pub struct AuthService;
@@ -45,7 +45,7 @@ impl AuthService {
 						return common_response(
 							StatusCode::INTERNAL_SERVER_ERROR,
 							"Failed to generate access token",
-						)
+						);
 					}
 				};
 
@@ -55,7 +55,7 @@ impl AuthService {
 						return common_response(
 							StatusCode::INTERNAL_SERVER_ERROR,
 							"Failed to generate refresh token",
-						)
+						);
 					}
 				};
 
@@ -116,7 +116,7 @@ impl AuthService {
 			fullname: payload.fullname,
 		};
 
-		let otp = generate_otp::OtpManager::generate_otp();
+		let otp = OtpManager::generate_otp();
 
 		repository
 			.query_store_otp(new_user.email.clone(), otp.clone())
@@ -139,7 +139,7 @@ impl AuthService {
 		state: &AppState,
 	) -> Response {
 		let repository = AuthRepository::new(state);
-		let otp = generate_otp::OtpManager::generate_otp();
+		let otp = OtpManager::generate_otp();
 		let message = format!("Your OTP code is {}", otp);
 		match repository.query_store_otp(payload.email.clone(), otp) {
 			Ok(_) => match send_email(&payload.email, "OTP Verification", &message) {
@@ -168,15 +168,15 @@ impl AuthService {
 				return common_response(
 					StatusCode::INTERNAL_SERVER_ERROR,
 					"Failed to generate access token",
-				)
+				);
 			}
 		};
 		let env = Env::new();
 		let fe_url = env.fe_url;
 		let message = format!(
-                "You have requested a password reset. Please click the link below to continue: {}/auth/reset-password?token={}",
-                fe_url, token
-            );
+			"You have requested a password reset. Please click the link below to continue: {}/auth/reset-password?token={}",
+			fe_url, token
+		);
 
 		match send_email(&payload.email, "Reset Password Request", &message) {
 			Ok(_) => common_response(StatusCode::OK, "Reset Password request send"),

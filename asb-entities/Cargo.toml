@@ -1,0 +1,12 @@
+[package]
+name = "asb-entities"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum.workspace = true
+redis.workspace = true
+serde.workspace = true
+surrealdb.workspace = true
+thiserror.workspace = true
+utoipa.workspace = true

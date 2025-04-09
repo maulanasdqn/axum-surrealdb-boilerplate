@@ -1,9 +1,10 @@
-[package]
-name = "axum-surrealdb-boilerplate"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+resolver = "2"
+members = [
+  "asb-*"
+, "tests"]
 
-[dependencies]
+[workspace.dependencies]
 axum = { version = "0.8.1", features = ["multipart"] }
 log = "0.4.25"
 serde = { version = "1.0.217", features = ["derive"] }

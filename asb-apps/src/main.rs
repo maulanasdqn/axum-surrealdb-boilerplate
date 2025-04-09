@@ -1,4 +1,5 @@
-use axum_surrealdb_boilerplate::{apps, axum_init};
+use asb_apps::apps;
+use asb_libs::axum_init;
 
 #[tokio::main]
 async fn main() {

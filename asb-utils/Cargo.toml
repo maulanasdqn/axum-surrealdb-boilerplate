@@ -1,0 +1,12 @@
+[package]
+name = "asb-utils"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+asb-libs = { version = "0.1.0", path = "../asb-libs" }
+asb-entities = { version = "0.1.0", path = "../asb-entities" }
+axum.workspace = true
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true

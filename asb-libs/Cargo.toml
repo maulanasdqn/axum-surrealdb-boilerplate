@@ -1,0 +1,16 @@
+[package]
+name = "asb-libs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+asb-entities = { version = "0.1.0", path = "../asb-entities" }
+argon2.workspace = true
+axum.workspace = true
+chrono.workspace = true
+jsonwebtoken.workspace = true
+lettre.workspace = true
+serde.workspace = true
+tokio.workspace = true
+redis.workspace = true
+surrealdb.workspace = true

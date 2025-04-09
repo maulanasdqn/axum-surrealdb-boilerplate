@@ -1,5 +1,5 @@
 use crate::decode_access_token;
-use axum::http::{header::AUTHORIZATION, HeaderMap};
+use axum::http::{HeaderMap, header::AUTHORIZATION};
 
 pub fn extract_email(headers: &HeaderMap) -> Option<String> {
 	let auth_header = headers.get(AUTHORIZATION)?.to_str().ok()?;

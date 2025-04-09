@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use surrealdb::{engine::remote::ws::Client, Surreal};
+use surrealdb::{Surreal, engine::remote::ws::Client};
 use utoipa::{IntoParams, ToSchema};
 
 #[derive(Debug, Clone, Serialize, Deserialize, ToSchema)]

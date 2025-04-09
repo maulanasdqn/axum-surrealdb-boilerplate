@@ -1,6 +1,5 @@
-use crate::{redisdb_init, Env, RedisClient};
-use crate::{surrealdb_init, SurrealClient};
-use axum::{serve, Router};
+use crate::{Env, RedisClient, SurrealClient, redisdb_init, surrealdb_init};
+use axum::{Router, serve};
 use std::{future::Future, net::SocketAddr};
 use tokio::net::TcpListener;
 

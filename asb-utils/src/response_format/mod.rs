@@ -1,12 +1,11 @@
+use crate::{ResponseListSuccessDto, ResponseSuccessDto};
 use axum::{
+	Json,
 	http::StatusCode,
 	response::{IntoResponse, Response},
-	Json,
 };
 use serde::Serialize;
 use serde_json::json;
-
-use crate::{ResponseListSuccessDto, ResponseSuccessDto};
 
 pub fn success_response<T: Serialize>(params: ResponseSuccessDto<T>) -> Response {
 	(
