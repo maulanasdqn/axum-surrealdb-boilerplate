@@ -1,4 +1,4 @@
-# Axum SurrealDB Boilerplate
+# Axum SurrealDB StarterKit
 
 ## Features
 
@@ -19,18 +19,18 @@
 
 1. **Clone the Repository**:
 
-   - `git clone https://github.com/maulanasdqn/axum-surrealdb-boilerplate`
+   - `git clone https://github.com/maulanasdqn/axum-starterkit.git`
 
 2. **Set Up Environment Variables**:
 
    - Copy `.env.example` and rename it to `.env`
 
    - **Windows**: Run the script: `./apply-env.ps1`
-   - **Unix-based systems (Linux, macOS, BSD)**: Run the script: `./apply-env.sh`
+   - **Unix-based systems (Linux, macOS, BSD)**: Run the script: `source ./apply-env.sh`
 
 3. **Install Dependencies**:
 
-   - `cargo install .`
+   - `cargo fetch`
 
 4. **Setup Database**:
 
@@ -42,7 +42,7 @@
 5. **Start the Server**:
 
    - Install Cargo Watch `cargo install cargo-watch`
-   - Run it with cargo watch `cargo watch -x run`
+   - Run it with cargo watch `cargo watch -x "run --bin api"`
 
    The API will be available at `http://localhost:3000/docs`.
 
@@ -50,19 +50,30 @@
 
 1. **Build the Docker Image**:
 
+   - `docker build -t axum-starterkit .`
+
 2. **Run the Docker Container**:
 
-   The API will be accessible at `http://localhost:3000/docs`.
+   - `docker run --env-file .env -p 3000:3000 axum-starterkit`
 
 ## Using Nix as Builder (Optional)
 
 1. **Install Nix**:
 
+- Install Nix from [nixos.org](https://nixos.org/).
+
 2. **Enter Nix Shell or Use Nix Flakes**:
+
+- Enter Nix shell: `nix develop`
+- Use Nix Flakes: `nix build`
 
 3. **Build the Project**:
 
+- `nix build`
+
 4. **Run the Server**:
+
+- `nix run`
 
 ## Contributing
 
